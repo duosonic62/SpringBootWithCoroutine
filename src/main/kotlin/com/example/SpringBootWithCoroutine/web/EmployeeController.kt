@@ -6,8 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-open class EmployeeController (private val employeeService: EmployeeService) {
+class EmployeeController(private val employeeService: EmployeeService) {
     @GetMapping
     suspend fun getAllEmproyee(): List<Employee> =
             employeeService.getAllEmployee()
+
+    @GetMapping("non_suspend")
+    fun getAllEmployeeNotSuspend(): List<Employee> =
+            employeeService.getAllEmployeeNonSuspend()
+
 }
